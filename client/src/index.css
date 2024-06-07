@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --theme-primary: #6504B5;
+  --theme-grey: #efeef1;
+  --theme-text-primary-dark: #474B51;
+  --theme-text-primary: #410078;
+  --message-bubble-bg: #F4E9FD;
+  --border-grey-light: #EEEFF1;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.appBar {
+  height: 6vh;
+  background-color: var(--theme-primary);
+  color: #FFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.appBar div {
+  display: flex;
+}
+.appBar .icon__menu {
+  margin-right: 10px;
+}
+.appBar .icon__search {
+  margin-right: 10px;
+}
+.btn {
+  width: 130px;
+  height: 40px;
+  padding: 8px 12px 8px 12px;
+  font-weight: 600;
+  line-height: 19px;
+  border-radius: 4px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn__primary {
+  background-color: var(--theme-primary);
+  color: #FFF;
+}
+.btn__secondary {
+  background-color: #FFF;
+  color: var(--theme-primary);
+}
+.home__container {
+  width: 100%;
+  height:94vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home__container > * {
+  margin-bottom: 10px;
+}
+.home__header {
+  margin-bottom: 30px;
+}
+.username__input {
+  padding: 10px;
+  width: 50%;
+}
+.chat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.chat__mainHeader {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: var(--theme-grey);
+}
+.chat__mainHeader .chat__recipient {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: 'Nexa', 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #33373E;
+}
+.chat__mainHeader .chat__recipient__status {
+  color: var(--theme-text-primary-dark);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.chat__mainHeader .chat__adoption__status {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+}
+.leaveChat__btn {
+  padding: 10px;
+  width: 150px;
+  border: none;
+  outline: none;
+  background-color: var(--theme-primary);
+  border: 2px solid var(--theme-primary);
+  cursor: pointer;
+  color: #FFF;
+}
+.chat__subHeader {
+  height: 5vh;
+  padding: 10px 20px;
+  display: flex;
+  line-height: 1;
+}
+.chat__subHeader img {
+  margin-right: 10px;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 35px;
+  width: 35px;
+}
+.chat__subHeader small {
+  font-size: 12px;
+  font-weight: 300;
+}
+.chat__subHeader p {
+  font-weight: 800;
+  font-size: 16px;
+}
+.message__container {
+  width: 100%;
+  height: 74vh;
+  background-color: #fff;
+  padding: 0px 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.message__container > * {
+  margin-bottom: 10px;
+}
+.chat__footer {
+  background-color: #FFFFFF;
+  height: 10vh;
+  border: 1px solid var(--border-grey-light);
+}
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.message {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  outline: none;
+  padding: 15px;
+  margin: 0;
+  border: none;
+}
+.btn__send {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 75%;
+  border: 2px solid var(--theme-primary);
+  color: var(--theme-primary);
+  background-color: #FFF;
+  padding: 8px 12px 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 1em;
+}
+.message__recipient {
+  background-color: var(--message-bubble-bg);
+  color: var(--theme-text-primary-dark);
+  width: 300px;
+  font-weight: 300;
+  padding: 8px 16px 8px 16px;
+  border-radius: 20px;
+  line-height: 22px;
+  font-size: 16px;
+}
+.message__sender {
+  background-color: var(--message-bubble-bg);
+  color: var(--theme-text-primary-dark);
+  max-width: 300px;
+  font-weight: 300;
+  padding: 8px 16px 8px 16px;
+  border-radius: 20px;
+  line-height: 22px;
+  font-size: 16px;
+  margin-left: auto;
+}
+.message__chats > p {
+  font-size: 13px;
+}
+.sender__name {
+  text-align: right;
+}
+.message__status {
+  position: fixed;
+  bottom: 50px;
+  font-size: 13px;
+  font-style: italic;
+}
+.heading__container {
+  background-color: var(--theme-grey);
+  padding: 10px 20px;
+}
+.heading__container h1 {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 300;
+}
+.sort__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid #F7F8FA;
+  font-weight: 600;
+  font-size: 14px;
+}
+.sort__container__name {
+  display: flex;
+  align-items: center;
+}
+.subHeading__container {
+  padding: 10px 20px;
+}
+.subHeading__container h2 {
+  color: var(--theme-text-primary-dark);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+a.card {
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0px 10px 10px 0px;
+  margin: 10px 20px;
+  font: inherit;
+  line-height: inherit;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-grey-light);
+}
+.card__avatar__container {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+}
+.card__animal__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.card__avatar__indicator {
+  background-color: #d9d9d9;
+  border: 2px solid #FFF;
+}
+.card__avatar__container .status {
+  width: 32px;
+  height: 32px;
+  bottom: 6px;
+  right: -16px;
+  position: absolute;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.card__text__container .user {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--theme-text-primary-dark);
+}
+.card__text__container .animal {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--theme-text-primary);
+}
+.card__text__container .messages {
+  font-weight: 300;
+  size: 16px;
+  line-height: 19px;
+  color: var(--theme-text-primary-dark);
+}
+.card__text__container .time {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--theme-text-primary-dark);
+}
