@@ -15,6 +15,12 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(bodyParser.json());
 
+const socketIO = require('socket.io')(http, {
+  cors: {
+    origin: "*",
+  }
+});
+
 // Database connection
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -29,12 +35,6 @@ db.connect((err) => {
     return;
   }
   console.log('Connected to the database as id ' + db.threadId);
-});
-
-const socketIO = require('socket.io')(http, {
-  cors: {
-    origin: "*",
-  }
 });
 
 socketIO.on('connection', (socket) => {
@@ -61,8 +61,9 @@ app.get('/api', (req, res) => {
 // New proxy endpoint
 app.get('/proxy/transcripts', async (req, res) => {
   try {
+    const sessionId = req.query.id;
     const response = await axios.get('https://chat.botsmexico.com/webhook-chatbot/purina-bot/api/api.php/transcripts', {
-      params: { session_id: '6961e97f961baab7ef75accedc37a3a9' }
+      params: { session_id: sessionId }
     });
     res.json(response.data);
   } catch (error) {
