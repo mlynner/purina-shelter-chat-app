@@ -4,7 +4,7 @@ import chatbotAvatar from '../assets/chatbot-avatar.svg';
 import janeAvatar from '../assets/jane-avatar.svg';
 import adminProfile from '../assets/admin-avatar.svg';
 
-const ChatBody = ({ messages }) => {
+const ChatBody = ({ messages, botMessages }) => {
   const [userName, setUserName] = useState('User');
   const [senderAvatar, setSenderAvatar] = useState('You');
   const [recipientAvatar, setRecipientAvatar] = useState('You');
@@ -41,12 +41,27 @@ const ChatBody = ({ messages }) => {
         </div>
       </div>
       <div className="message__container">
-        <div className="message__chats">
-          <img src={chatbotAvatar} alt="petfinder" />
-          <div className="message__recipient">
-            <p>How old is Rudy?</p>
+        {botMessages.map((message) => (
+          <div className="message__chats" key={message.transcript_id}>
+            {message.transcript_source === 'USER' ? (
+              <>
+                <div className="sender__name">
+                  <img src={senderAvatar} alt="sender" />
+                </div>
+                <div className="message__sender">
+                  <p>{message.transcript_response}</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <img src={recipientAvatar} alt="user" />
+                <div className="message__recipient">
+                  <p>{message.transcript_response}</p>
+                </div>
+              </>
+            )}
           </div>
-        </div>
+        ))}
         {messages.map((message) =>
           message.name === localStorage.getItem('userName') ? (
             <div className="message__chats" key={message.id}>

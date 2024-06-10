@@ -8,7 +8,7 @@ const Home = ({ socket }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem('userName', userName);
-    //sends the username and socket ID to the Node.js server
+    // Sends the username and socket ID to the Node.js server
     socket.emit('newUser', { userName, socketID: socket.id });
     if (userName !== 'Admin') {
       navigate('/chat');
@@ -16,6 +16,7 @@ const Home = ({ socket }) => {
       navigate('/messages');
     }
   };
+
   return (
     <form className="home__container" onSubmit={handleSubmit}>
       <h2 className="home__header">Sign in to view Messages</h2>

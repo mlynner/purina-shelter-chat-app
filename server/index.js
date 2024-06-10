@@ -7,6 +7,7 @@ const users = [];
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const axios = require('axios');
 
 const PORT = process.env.PORT || 4000;
 
@@ -32,7 +33,7 @@ db.connect((err) => {
 
 const socketIO = require('socket.io')(http, {
   cors: {
-    origin: ["http://localhost:3000"],
+    origin: "*",
   }
 });
 
@@ -55,6 +56,19 @@ socketIO.on('connection', (socket) => {
 
 app.get('/api', (req, res) => {
   res.json({ message: 'Hello world' });
+});
+
+// New proxy endpoint
+app.get('/proxy/transcripts', async (req, res) => {
+  try {
+    const response = await axios.get('https://chat.botsmexico.com/webhook-chatbot/purina-bot/api/api.php/transcripts', {
+      params: { session_id: '6961e97f961baab7ef75accedc37a3a9' }
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching transcripts:', error);
+    res.status(500).json({ error: 'Error fetching transcripts' });
+  }
 });
 
 http.listen(PORT, () => {
