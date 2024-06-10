@@ -46,7 +46,7 @@ const ChatBody = ({ messages, botMessages }) => {
             {message.transcript_source === 'USER' ? (
               <>
                 <div className="sender__name">
-                  <img src={senderAvatar} alt="sender" />
+                  <img src={janeAvatar} alt="sender" />
                 </div>
                 <div className="message__sender">
                   <p>{message.transcript_response}</p>
@@ -54,7 +54,7 @@ const ChatBody = ({ messages, botMessages }) => {
               </>
             ) : (
               <>
-                <img src={recipientAvatar} alt="user" />
+                <img src={chatbotAvatar} alt="user" />
                 <div className="message__recipient">
                   <p>{message.transcript_response}</p>
                 </div>
