@@ -21,14 +21,6 @@ The application is divided into two main parts:
 - **React Router**
   - Used for handling routing within the React application.
 
-### Starting the Client
-
-To start the client, navigate to the client folder and run the following command:
-
-```bash
-cd client && npm start
-```
-
 ## Server
 
 ### Technologies Used
@@ -47,32 +39,25 @@ cd client && npm start
 
 - **Socket.io**
   - Enables configuring a real-time connection on the server.
-  - Listens to custom Socket.io events (e.g., socket.on('message')).
-
-### Starting the Server
-
-To start the server, navigate to the server folder and run the following command:
-
-```bash
-cd server && npm start
-```
 
 ### Using the Application for Demo
 
-1. Open two incognito browser windows and visit the link: http://localhost:3000. This will open the sign-in page.
+1. Open an incognito browser window and visit the link: http://localhost:3000. This will open the sign-in page.
 
-2. Sign in with the username “Admin” in one window.
+2. Sign in with the username “Admin".
 
 **IMPORTANT**: The exact string “Admin” must be used as the username in order to log in as an admin and be directed to the /messages page.
 The admin user will be directed to the /messages page where you can click on the “Jane” conversation to open the chat window.
 
-3. Sign in on the second window with the username “Jane”. You will be directed to the chat page connected to the Admin user.
+3. Sign in on another browser with the username “Jane”. You will be directed to the chat page connected to the Admin user.
+
+4. You will need to provide an URL id param to pull the chatbot data. (http://localhost:3000/chat?id=6961e97f961baab7ef75accedc37a3a9).
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
