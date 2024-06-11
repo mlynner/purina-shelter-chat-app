@@ -14,6 +14,9 @@
   padding: 0;
   font-family: 'Poppins', sans-serif;
 }
+.text__primary {
+  color: var(--theme-text-primary);
+}
 .appBar {
   height: 6vh;
   background-color: var(--theme-primary);
@@ -33,7 +36,7 @@
   margin-right: 10px;
 }
 .btn {
-  width: 130px;
+  min-width: 130px;
   height: 40px;
   padding: 8px 12px 8px 12px;
   font-weight: 600;
@@ -44,6 +47,10 @@
   outline: none;
   cursor: pointer;
   text-transform: uppercase;
+  border: 2px solid var(--theme-primary);
+}
+.btn__container button {
+  margin-right: 10px;
 }
 .btn__primary {
   background-color: var(--theme-primary);
@@ -102,6 +109,9 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
 }
 .leaveChat__btn {
   padding: 10px;
@@ -302,4 +312,126 @@ a.card {
   font-size: 12px;
   line-height: 18px;
   color: var(--theme-text-primary-dark);
+}
+
+/* MODAL */
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  max-width: 640px;
+  height: 70vh;
+  position: absolute;
+  bottom: 0;
+  overflow: auto;
+  padding: 20px;
+}
+
+.modal h2 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.modal__container {
+  background-color: var(--theme-grey);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 10px 10px 20px;
+}
+
+.modal__container .checkbox__notification {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000;
+}
+
+.modal__close:hover {
+  color: #333;
+}
+
+/* CUSTOM CHECKBOX */
+
+.checkbox__notification {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  color: #474B51;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* Hide the browser's default checkbox */
+.checkbox__notification input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+.checkbox__notification:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.checkbox__notification input:checked ~ .checkmark {
+  background-color: #6504b5;
+  border-radius: 3px;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkbox__notification input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.checkbox__notification .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
