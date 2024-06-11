@@ -6,6 +6,7 @@ import socketIO from 'socket.io-client';
 import AppBar from './components/AppBar';
 
 const socket = socketIO.connect('http://localhost:4000');
+
 function App() {
   return (
     <BrowserRouter>

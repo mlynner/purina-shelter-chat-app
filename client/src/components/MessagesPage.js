@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import chevronDown from '../assets/chevron-down.svg';
 import animalAvatar from '../assets/dog.jpeg';
 import janeAvatar from '../assets/jane-avatar.svg';
+import { useLocation } from 'react-router-dom';
 
 const MessagesPage = () => {
+  const location = useLocation();
+  const [sessionId, setSessionId] = useState('');
+
+  useEffect(() => {
+    // Extract sessionId from URL query parameters
+    const searchParams = new URLSearchParams(location.search);
+    const sessionId = searchParams.get('id');
+    setSessionId(sessionId);
+  }, [location.search]);
+
+  const getChatUrl = () => {
+    if (!sessionId) {
+      return '/chat'
+    }
+    return `/chat?id=${sessionId}`
+  }
+
+  const chatUrl = getChatUrl();
+
   const data = [
     {
       id: 0,
@@ -75,7 +95,7 @@ const MessagesPage = () => {
       </div>
 
       {readyToAdoptData.map((item) => (
-        <a key={item.id} className="card" href="/chat">
+        <a key={item.id} className="card" href={chatUrl}>
           <div className="card__avatar__container">
             <img src={item.animalAvatar} className="card__animal__avatar" alt="animal" />
             {item.userAvatar ? (
@@ -98,7 +118,7 @@ const MessagesPage = () => {
       </div>
 
       {justAskingQuestionsData.map((item) => (
-        <a key={item.id} className="card" href="/chat">
+        <a key={item.id} className="card" href={chatUrl}>
           <div className="card__avatar__container">
             <img src={item.animalAvatar} className="card__animal__avatar" alt="animal" />
             {item.userAvatar ? (

@@ -43,30 +43,20 @@ const ChatBody = ({ messages, botMessages }) => {
       <div className="message__container">
         {botMessages.map((message) => (
           <div className="message__chats" key={message.transcript_id}>
-            {message.transcript_source === 'USER' ? (
-              <>
-                <div className="sender__name">
-                  <img src={janeAvatar} alt="sender" />
-                </div>
-                <div className="message__sender">
-                  <p>{message.transcript_response}</p>
-                </div>
-              </>
-            ) : (
-              <>
-                <img src={chatbotAvatar} alt="user" />
-                <div className="message__recipient">
-                  <p>{message.transcript_response}</p>
-                </div>
-              </>
-            )}
+            <img
+              src={message.transcript_source === 'USER' ? janeAvatar : chatbotAvatar}
+              alt={message.transcript_source === 'USER' ? 'sender' : 'user'}
+            />
+            <div className="message__recipient">
+              <p>{message.transcript_response}</p>
+            </div>
           </div>
         ))}
         {messages.map((message) =>
           message.name === localStorage.getItem('userName') ? (
             <div className="message__chats" key={message.id}>
               <div className="sender__name">
-                <img src={senderAvatar} alt="user" />
+                <img src={senderAvatar} alt="You" />
               </div>
               <div className="message__sender">
                 <p>{message.text}</p>
@@ -74,7 +64,7 @@ const ChatBody = ({ messages, botMessages }) => {
             </div>
           ) : (
             <div className="message__chats" key={message.id}>
-              <img src={recipientAvatar} alt="recipient" />
+              <img src={recipientAvatar} alt="User" />
               <div className="message__recipient">
                 <p>{message.text}</p>
               </div>
