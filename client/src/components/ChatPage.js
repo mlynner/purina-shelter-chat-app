@@ -16,7 +16,7 @@ useEffect(() => {
         const sessionId = searchParams.get('id');
 
         if (sessionId) {
-          const response = await fetch(`http://localhost:4000/proxy/transcripts?id=${sessionId}`);
+          const response = await fetch(`${process.env.REACT_APP_SOCKET_URL}/proxy/transcripts?id=${sessionId}`);
           const data = await response.json();
           setBotMessages(data);
         } else {
