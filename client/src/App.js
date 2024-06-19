@@ -5,7 +5,7 @@ import MessagesPage from './components/MessagesPage';
 import socketIO from 'socket.io-client';
 import AppBar from './components/AppBar';
 
-const socket = socketIO.connect('http://localhost:4000');
+const socket = socketIO.connect(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
   return (
