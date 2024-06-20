@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
 import { useLocation } from 'react-router-dom';
@@ -7,6 +7,7 @@ const ChatPage = ({ socket }) => {
   const [messages, setMessages] = useState([]);
   const [botMessages, setBotMessages] = useState([]);
   const location = useLocation();
+  const lastMessageRef = useRef(null);
 
 useEffect(() => {
     const fetchData = async () => {
@@ -31,9 +32,14 @@ useEffect(() => {
     socket.on('messageResponse', (data) => setMessages([...messages, data]));
   }, [socket, messages, location.search]);
 
+  useEffect(() => {
+    // scroll to bottom every time messages change
+    lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
   return (
     <>
-      <ChatBody messages={messages} botMessages={botMessages} />
+      <ChatBody messages={messages} botMessages={botMessages} lastMessageRef={lastMessageRef} />
       <ChatFooter socket={socket} />
     </>
   );
