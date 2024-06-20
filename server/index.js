@@ -62,7 +62,7 @@ app.get('/api', (req, res) => {
 app.get('/proxy/transcripts', async (req, res) => {
   try {
     const sessionId = req.query.id;
-    const response = await axios.get('https://chat.botsmexico.com/webhook-chatbot/purina-bot/api/api.php/transcripts', {
+    const response = await axios.get(process.env.REACT_APP_CHATBOT_API, {
       params: { session_id: sessionId }
     });
     res.json(response.data);

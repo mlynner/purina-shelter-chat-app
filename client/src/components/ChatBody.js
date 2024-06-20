@@ -5,7 +5,7 @@ import janeAvatar from '../assets/jane-avatar.svg';
 import adminProfile from '../assets/admin-avatar.svg';
 import Modal from './Modal';
 
-const ChatBody = ({ messages, botMessages }) => {
+const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
   const [userName, setUserName] = useState('User');
   const [senderAvatar, setSenderAvatar] = useState('You');
   const [recipientAvatar, setRecipientAvatar] = useState('You');
@@ -82,6 +82,7 @@ const ChatBody = ({ messages, botMessages }) => {
             </div>
           )
         )}
+        <div ref={lastMessageRef} />
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <div className="modal__container">
