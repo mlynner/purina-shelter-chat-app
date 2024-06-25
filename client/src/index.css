@@ -17,6 +17,15 @@
 .text__primary {
   color: var(--theme-text-primary);
 }
+.text__center {
+  text-align: center;
+}
+.d__flex {
+  display: flex;
+}
+.justify__content__center {
+  justify-content: center;
+}
 .appBar {
   height: 6vh;
   background-color: var(--theme-primary);
@@ -43,11 +52,13 @@
   line-height: 19px;
   border-radius: 4px;
   font-size: 14px;
-  border: none;
   outline: none;
   cursor: pointer;
   text-transform: uppercase;
   border: 2px solid var(--theme-primary);
+}
+.btn__rounded {
+  border-radius: 25px;
 }
 .btn__container button {
   margin-right: 10px;
@@ -333,16 +344,12 @@ a.card {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  width: 100vw;
-  max-width: 640px;
-  height: 70vh;
-  position: absolute;
-  bottom: 0;
+  width: 390px;
   overflow: auto;
-  padding: 20px;
+  padding: 10px;
 }
 
-.modal h2 {
+.modal .modal__admin h2 {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
@@ -350,27 +357,33 @@ a.card {
   margin-bottom: 10px;
 }
 
-.modal__container {
+.modal__admin .modal__container {
   background-color: var(--theme-grey);
   padding: 20px;
   border-radius: 6px;
   margin: 10px 10px 20px;
 }
 
-.modal__container .checkbox__notification {
+.modal__admin .modal__container .checkbox__notification {
   margin-top: 20px;
   margin-bottom: 0px;
 }
 
+.modal .modal__user h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  color: var(--theme-text-primary);
+  padding: 10px 0 20px 0;
+  text-align: center;
+}
+
 .modal__close {
-  position: absolute;
-  top: 0px;
-  right: 10px;
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
-  color: #000;
+  width: 100%;
+  text-align: right;
 }
 
 .modal__close:hover {

@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import chevronDown from '../assets/chevron-down.svg';
 import animalAvatar from '../assets/dog.jpeg';
+import martinAnimalAvatar from '../assets/martinAnimalAvatar.png';
+import joseAnimalAvatar from '../assets/joseAnimalAvatar.png';
+import daphneAnimalAvatar from '../assets/daphneAnimalAvatar.png';
+import chrisAnimalAvatar from '../assets/chrisAnimalAvatar.png';
+import martinAvatar from '../assets/martinAvatar.svg';
+import joseAvatar from '../assets/joseAvatar.svg';
+import daphneAvatar from '../assets/daphneAvatar.svg';
+import chrisAvatar from '../assets/chrisAvatar.svg';
 import janeAvatar from '../assets/jane-avatar.svg';
 import { useLocation } from 'react-router-dom';
 
@@ -27,52 +35,52 @@ const MessagesPage = () => {
   const data = [
     {
       id: 0,
-      userName: 'Matt',
+      userName: 'Jane',
       animalName: 'Rudy',
-      message: 'Is Rudy good with kids?',
-      time: 'yesterday',
-      userAvatar: null,
+      message: "Who is Rudy's veterinarian?",
+      time: 'Today',
+      userAvatar: janeAvatar,
       animalAvatar: animalAvatar,
-      readyToAdopt: true,
+      readyToAdopt: true
     },
     {
       id: 1,
       userName: 'Chris',
-      animalName: 'Rudy',
-      message: 'What else can you tell me about Rudy?',
-      time: '1h ago',
-      userAvatar: null,
-      animalAvatar: animalAvatar,
-      readyToAdopt: false
+      animalName: 'Fable',
+      message: "Can you tell me if Fable is good with...",
+      time: 'Yesterday',
+      userAvatar: chrisAvatar,
+      animalAvatar: chrisAnimalAvatar,
+      readyToAdopt: true
     },
     {
       id: 2,
       userName: 'Daphne',
-      animalName: 'Rudy',
-      message: 'Do you transport to other locations?',
-      time: '2d ago',
-      userAvatar: null,
-      animalAvatar: animalAvatar,
+      animalName: 'Benjamin',
+      message: 'Do you transport to other locations...',
+      time: 'Yesterday',
+      userAvatar: daphneAvatar,
+      animalAvatar: daphneAnimalAvatar,
       readyToAdopt: true
     },
     {
       id: 3,
       userName: 'Jose',
-      animalName: 'Rudy',
-      message: 'Can Rudy live without a fence?',
-      time: 'yesterday',
-      userAvatar: null,
-      animalAvatar: animalAvatar,
+      animalName: 'Milo',
+      message: "Is it possible for the shelter to assis...",
+      time: 'Yesterday',
+      userAvatar: joseAvatar,
+      animalAvatar: joseAnimalAvatar,
       readyToAdopt: false
     },
     {
       id: 4,
-      userName: 'Jane',
-      animalName: 'Rudy',
-      message: 'How old is Rudy?',
-      time: '2d ago',
-      userAvatar: janeAvatar,
-      animalAvatar: animalAvatar,
+      userName: 'Martin',
+      animalName: 'Casper',
+      message: "Can Casper live without a Fence?",
+      time: '2 days ago',
+      userAvatar: martinAvatar,
+      animalAvatar: martinAnimalAvatar,
       readyToAdopt: false
     },
   ];
