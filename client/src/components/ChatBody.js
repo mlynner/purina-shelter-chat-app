@@ -5,27 +5,22 @@ import janeAvatar from '../assets/jane-avatar.svg';
 import adminProfile from '../assets/admin-avatar.svg';
 import rudyModal from '../assets/rudy-adopt-modal.png';
 import Modal from './Modal';
+import downCaret from '../assets/downCaretPrimary.svg'
+import { SHELTER_VIEW_KEY } from '../consts/const';
+import { useNavigate } from 'react-router-dom';
 
 const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState('User');
   const [senderAvatar, setSenderAvatar] = useState('You');
   const [recipientAvatar, setRecipientAvatar] = useState('You');
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   useEffect(() => {
     const storedUserName = localStorage.getItem('userName');
     if (storedUserName) {
-      if (storedUserName === 'Admin') {
-        setUserName('Admin');
+      if (storedUserName === SHELTER_VIEW_KEY) {
+        setUserName(SHELTER_VIEW_KEY);
         setSenderAvatar(adminProfile);
         setRecipientAvatar(janeAvatar);
       } else {
@@ -36,6 +31,22 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
     }
   }, []);
 
+  const readyToAdopt = () => {
+    if (userName === SHELTER_VIEW_KEY) {
+      openModal();
+    } else {
+      navigate('/affiliate-login');
+    }
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <header className="chat__mainHeader">
@@ -43,7 +54,7 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
           <p className="chat__recipient">{userName}</p>
           <small className="chat__recipient__status">{userName} is currently online</small>
         </div>
-        <button onClick={openModal} className="chat__adoption__status">Ready to adopt</button>
+        <button onClick={readyToAdopt} className="chat__adoption__status">Ready to adopt</button>
       </header>
       <div className="chat__subHeader">
         <img src={rudy} alt="animal" />
@@ -86,7 +97,7 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
         <div ref={lastMessageRef} />
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {userName === "Admin" ? (
+        {userName === SHELTER_VIEW_KEY ? (
           <div className="modal__admin">
             <div className="d__flex justify__content__center">
               <img src={rudyModal} alt="adopt animal" />
@@ -101,7 +112,7 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
             <div className="modal__container">
               <h2>Would you like to update Rudy's status?</h2>
               <div class="d__flex btn__container">
-                  <button className="btn btn__secondary">Adopted</button>
+                  <button className="btn btn__secondary btn__icon">Adopted<img src={downCaret} alt="down caret" /></button>
                   <button className="btn btn__primary">Update Status</button>
               </div>
               <label class="checkbox__notification">
