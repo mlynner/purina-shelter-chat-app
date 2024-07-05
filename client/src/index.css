@@ -60,6 +60,11 @@
 .btn__rounded {
   border-radius: 25px;
 }
+.btn__icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .btn__container button {
   margin-right: 10px;
 }

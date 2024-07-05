@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SHELTER_VIEW_KEY } from '../consts/const';
 
 const Home = ({ socket }) => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const Home = ({ socket }) => {
     localStorage.setItem('userName', userName);
     // Sends the username and socket ID to the Node.js server
     socket.emit('newUser', { userName, socketID: socket.id });
-    if (userName !== 'Admin') {
+    if (userName !== SHELTER_VIEW_KEY) {
       navigate('/chat');
     } else {
       navigate('/messages');

@@ -5,12 +5,13 @@ import janeAvatar from '../assets/jane-avatar.svg';
 import adminProfile from '../assets/admin-avatar.svg';
 import rudyModal from '../assets/rudy-adopt-modal.png';
 import Modal from './Modal';
+import downCaret from '../assets/downCaretPrimary.svg'
+import { SHELTER_VIEW_KEY } from '../consts/const';
 
 const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
   const [userName, setUserName] = useState('User');
   const [senderAvatar, setSenderAvatar] = useState('You');
   const [recipientAvatar, setRecipientAvatar] = useState('You');
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -24,8 +25,8 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
   useEffect(() => {
     const storedUserName = localStorage.getItem('userName');
     if (storedUserName) {
-      if (storedUserName === 'Admin') {
-        setUserName('Admin');
+      if (storedUserName === SHELTER_VIEW_KEY) {
+        setUserName(SHELTER_VIEW_KEY);
         setSenderAvatar(adminProfile);
         setRecipientAvatar(janeAvatar);
       } else {
@@ -86,7 +87,7 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
         <div ref={lastMessageRef} />
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {userName === "Admin" ? (
+        {userName === SHELTER_VIEW_KEY ? (
           <div className="modal__admin">
             <div className="d__flex justify__content__center">
               <img src={rudyModal} alt="adopt animal" />
@@ -101,7 +102,7 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
             <div className="modal__container">
               <h2>Would you like to update Rudy's status?</h2>
               <div class="d__flex btn__container">
-                  <button className="btn btn__secondary">Adopted</button>
+                  <button className="btn btn__secondary btn__icon">Adopted<img src={downCaret} alt="down caret" /></button>
                   <button className="btn btn__primary">Update Status</button>
               </div>
               <label class="checkbox__notification">
