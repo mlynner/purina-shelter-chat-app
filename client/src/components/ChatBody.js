@@ -7,10 +7,8 @@ import rudyModal from '../assets/rudy-adopt-modal.png';
 import Modal from './Modal';
 import downCaret from '../assets/downCaretPrimary.svg'
 import { SHELTER_VIEW_KEY } from '../consts/const';
-import { useNavigate } from 'react-router-dom';
 
 const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
-  const navigate = useNavigate();
   const [userName, setUserName] = useState('User');
   const [senderAvatar, setSenderAvatar] = useState('You');
   const [recipientAvatar, setRecipientAvatar] = useState('You');
@@ -31,14 +29,6 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
     }
   }, []);
 
-  const readyToAdopt = () => {
-    if (userName === SHELTER_VIEW_KEY) {
-      openModal();
-    } else {
-      navigate('/affiliate-login');
-    }
-  };
-
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -54,7 +44,7 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
           <p className="chat__recipient">{userName}</p>
           <small className="chat__recipient__status">{userName} is currently online</small>
         </div>
-        <button onClick={readyToAdopt} className="chat__adoption__status">Ready to adopt</button>
+        <button onClick={openModal} className="chat__adoption__status">Ready to adopt</button>
       </header>
       <div className="chat__subHeader">
         <img src={rudy} alt="animal" />
