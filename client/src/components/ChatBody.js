@@ -119,8 +119,8 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
             </div>
             <h2>Did you adopt Rudy?</h2>
             <div className="btn__container d__flex justify__content__center">
-              <button className="btn btn__secondary btn__rounded">No</button>
-              <button className="btn btn__primary btn__rounded">Yes</button>
+              <button onClick={closeModal} className="btn btn__secondary btn__rounded">No</button>
+              <button onClick={closeModal} className="btn btn__primary btn__rounded">Yes</button>
             </div>
           </div>
         )}
