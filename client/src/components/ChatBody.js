@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import rudy from '../assets/dog.jpeg';
 import chatbotAvatar from '../assets/chatbot-avatar.svg';
 import janeAvatar from '../assets/jane-avatar.svg';
@@ -7,9 +7,10 @@ import rudyModal from '../assets/rudy-adopt-modal.png';
 import Modal from './Modal';
 import downCaret from '../assets/downCaretPrimary.svg'
 import { SHELTER_VIEW_KEY } from '../consts/const';
+import UserContext from '../context/UserContext';
 
 const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
-  const [userName, setUserName] = useState('User');
+  const {userName, setUserName} = useContext(UserContext);
   const [senderAvatar, setSenderAvatar] = useState('You');
   const [recipientAvatar, setRecipientAvatar] = useState('You');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +31,11 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
   }, []);
 
   const openModal = () => {
-    setIsModalOpen(true);
+    if (userName === SHELTER_VIEW_KEY) {
+      setIsModalOpen(true);
+    } else {
+      window.open('https://ebullymatch.com/dog-adoption/');
+    }
   };
 
   const closeModal = () => {
@@ -87,43 +92,30 @@ const ChatBody = ({ messages, botMessages, lastMessageRef }) => {
         <div ref={lastMessageRef} />
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {userName === SHELTER_VIEW_KEY ? (
-          <div className="modal__admin">
-            <div className="d__flex justify__content__center">
-              <img src={rudyModal} alt="adopt animal" />
-            </div>
-            <div className="modal__container">
-              <h2>Has Rudy been adopted by Jane?</h2>
-              <div class="d__flex btn__container">
-                  <button className="btn btn__primary">Yes</button>
-                  <button className="btn btn__secondary">No</button>
-              </div>
-            </div>
-            <div className="modal__container">
-              <h2>Would you like to update Rudy's status?</h2>
-              <div class="d__flex btn__container">
-                  <button className="btn btn__secondary btn__icon">Adopted<img src={downCaret} alt="down caret" /></button>
-                  <button className="btn btn__primary">Update Status</button>
-              </div>
-              <label class="checkbox__notification">
-                Notify other <span className="text__primary"><u><b>4</b></u></span> interested adopters that Rudy is no longer available.
-                <input type="checkbox" checked="checked" />
-                <span class="checkmark"></span>
-              </label>
+        <div className="modal__admin">
+          <div className="d__flex justify__content__center">
+            <img src={rudyModal} alt="adopt animal" />
+          </div>
+          <div className="modal__container">
+            <h2>Has Rudy been adopted by Jane?</h2>
+            <div class="d__flex btn__container">
+                <button className="btn btn__primary">Yes</button>
+                <button className="btn btn__secondary">No</button>
             </div>
           </div>
-        ) : (
-          <div className="modal__user">
-            <div className="d__flex justify__content__center">
-              <img src={rudyModal} alt="adopt animal" />
+          <div className="modal__container">
+            <h2>Would you like to update Rudy's status?</h2>
+            <div class="d__flex btn__container">
+                <button className="btn btn__secondary btn__icon">Adopted<img src={downCaret} alt="down caret" /></button>
+                <button className="btn btn__primary">Update Status</button>
             </div>
-            <h2>Did you adopt Rudy?</h2>
-            <div className="btn__container d__flex justify__content__center">
-              <button onClick={closeModal} className="btn btn__secondary btn__rounded">No</button>
-              <button onClick={closeModal} className="btn btn__primary btn__rounded">Yes</button>
-            </div>
+            <label class="checkbox__notification">
+              Notify other <span className="text__primary"><u><b>4</b></u></span> interested adopters that Rudy is no longer available.
+              <input type="checkbox" checked="checked" />
+              <span class="checkmark"></span>
+            </label>
           </div>
-        )}
+        </div>
       </Modal>
     </>
   );

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SHELTER_VIEW_KEY } from '../consts/const';
+import UserContext from '../context/UserContext';
 
 const Home = ({ socket }) => {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState('');
+  const { userName, setUserName } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
